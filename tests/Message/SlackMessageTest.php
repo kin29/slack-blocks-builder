@@ -1,11 +1,8 @@
 <?php
 
-namespace SlackBlocksBuilder\Test\Message;
+namespace Kin29\SlackBlocksBuilder\Message;
 
-use SlackBlocksBuilder\Message\SlackBlock;
-use SlackBlocksBuilder\Message\SlackMessage;
 use PHPUnit\Framework\TestCase;
-use SlackBlocksBuilder\Message\SlackText;
 
 class SlackMessageTest extends TestCase
 {
@@ -44,6 +41,44 @@ class SlackMessageTest extends TestCase
         $this->assertEquals(
             json_encode($expected, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE),
             (string)$message
+        );
+    }
+
+    public function testBuildMessage2()
+    {
+        $blocks = [
+            (new SlackBlock())
+                ->type('section')
+                ->text(
+                    (new SlackText())
+                        ->type('plain_text')
+                        ->text('Hi!')
+                        ->emoji()
+                ),
+            (new SlackBlock())
+                ->type('divider'),
+        ];
+
+        $expected = [
+            "blocks" => [
+                [
+                    "type" => "section",
+                    "text" => [
+                        "type" => "plain_text",
+                        "text" => "Hi!",
+                        "emoji" => true,
+                    ]
+                ],
+                [
+                    "type" => "divider",
+                ]
+            ]
+        ];
+
+
+        $this->assertEquals(
+            json_encode($expected, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE),
+            (new SlackMessage())->blocks($blocks)
         );
     }
 }

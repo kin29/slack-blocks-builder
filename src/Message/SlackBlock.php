@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SlackBlocksBuilder\Message;
+namespace Kin29\SlackBlocksBuilder\Message;
 
 class SlackBlock  extends AbstractSlackMessage
 {
@@ -112,7 +112,7 @@ class SlackBlock  extends AbstractSlackMessage
                 throw new \LogicException('Must hold only SlackBlock instances.');
             }
 
-            $this->$elements[] = $element->payload();
+            $this->elements[] = $element->payload();
         }
 
         return $this;
@@ -239,7 +239,7 @@ class SlackBlock  extends AbstractSlackMessage
                 throw new \LogicException('Must hold only SlackBlock instances.');
             }
 
-            $this->$fields[] = $field->payload();
+            $this->fields[] = $field->payload();
         }
 
         return $this;

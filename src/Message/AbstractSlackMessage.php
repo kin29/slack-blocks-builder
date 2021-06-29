@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SlackBlocksBuilder\Message;
+namespace Kin29\SlackBlocksBuilder\Message;
 
 abstract class AbstractSlackMessage implements SlackMessageInterface
 {

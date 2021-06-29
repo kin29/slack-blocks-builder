@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SlackBlocksBuilder\Message;
+namespace Kin29\SlackBlocksBuilder\Message;
 
 class SlackText extends AbstractSlackMessage
 {
@@ -49,12 +49,11 @@ class SlackText extends AbstractSlackMessage
     }
 
     /**
-     * @param bool $emoji
      * @return SlackText
      */
-    public function emoji(bool $emoji): SlackText
+    public function emoji(): SlackText
     {
-        $this->emoji = $emoji;
+        $this->emoji = true;
         return $this;
     }
 
