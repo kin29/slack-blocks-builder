@@ -33,7 +33,7 @@
             "./vendor/bin/phpmd src text ./phpmd.xml",
             "./vendor/bin/phpcs src"
         ],
-        "cs": "vendor/bin/php-cs-fixer fix -v --dry-run",
-        "cs-fix": "vendor/bin/php-cs-fixer fix -v"
+        "cs": "vendor/bin/php-cs-fixer fix -v --dry-run src/",
+        "cs-fix": "vendor/bin/php-cs-fixer fix -v src/"
     }
 }

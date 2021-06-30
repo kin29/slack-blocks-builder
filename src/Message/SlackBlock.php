@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Kin29\SlackBlocksBuilder\Message;
 
-class SlackBlock  extends AbstractSlackMessage
+class SlackBlock extends AbstractSlackMessage
 {
     /**
      * @var string $type
