@@ -2,10 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Kin29\SlackBlocksBuilder\Message;
+namespace Kin29\SlackBlocksBuilder\Message\SlackElement;
+
+use Kin29\SlackBlocksBuilder\Message\AbstractSlackMessage;
+use Kin29\SlackBlocksBuilder\Message\SlackMessageInterface;
 
 class SlackElement extends AbstractSlackMessage
 {
+    protected ?string $type = null;
+
     protected array $elements;
 
     /**
@@ -22,6 +27,11 @@ class SlackElement extends AbstractSlackMessage
             $this->elements[] = $element->payload();
         }
 
+        return $this;
+    }
+
+    public function type(): SlackElement
+    {
         return $this;
     }
 }
