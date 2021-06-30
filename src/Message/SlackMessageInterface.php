@@ -1,6 +1,6 @@
 <?php
 
-namespace SlackBlocksBuilder\Message;
+namespace Kin29\SlackBlocksBuilder\Message;
 
 interface SlackMessageInterface
 {
