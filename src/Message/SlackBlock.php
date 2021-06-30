@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Kin29\SlackBlocksBuilder\Message;
 
+use Kin29\SlackBlocksBuilder\Message\SlackElement\SlackElement;
+
 class SlackBlock extends AbstractSlackMessage
 {
     /**
@@ -66,6 +68,12 @@ class SlackBlock extends AbstractSlackMessage
     protected array $label;
 
     /**
+     * @var array
+     * type="input"の時必須
+     */
+    protected array $element;
+
+    /**
      * @var bool
      */
     protected bool $dispatch_action = false;
@@ -109,7 +117,7 @@ class SlackBlock extends AbstractSlackMessage
     {
         foreach ($elements as $element) {
             if (!$element instanceof SlackElement) {
-                throw new \LogicException('Must hold only SlackBlock instances.');
+                throw new \LogicException('Must hold only SlackElement instances.');
             }
 
             $this->elements[] = $element->payload();
@@ -195,6 +203,16 @@ class SlackBlock extends AbstractSlackMessage
     public function label(SlackText $label): SlackBlock
     {
         $this->label = $label->payload();
+        return $this;
+    }
+
+    /**
+     * @param SlackElement $element
+     * @return SlackBlock
+     */
+    public function element(SlackElement $element): SlackBlock
+    {
+        $this->element = $element->payload();
         return $this;
     }
 
