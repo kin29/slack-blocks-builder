@@ -274,4 +274,22 @@ class SlackBlockTest extends TestCase
             (string)(new SlackBlock())->type('file')->externalId('ABCD1')->source('remote')
         );
     }
+
+    public function test_header_block(): void
+    {
+        $expected = [
+            "type" => "header",
+            "text" => [
+                "type" => "plain_text",
+                "text" => "Budget Performance",
+            ],
+        ];
+
+        $this->assertEquals(
+            json_encode($expected, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE),
+            (string)(new SlackBlock())
+                ->type('header')
+                ->text((new SlackText())->type('plain_text')->text('Budget Performance'))
+        );
+    }
 }
