@@ -1,23 +1,24 @@
 <?php
 
-namespace Kin29\SlackBlocksBuilder\Message;
+namespace Kin29\SlackBlocksBuilder\Tests\Message;
 
+use Kin29\SlackBlocksBuilder\Message\SlackBlock;
+use Kin29\SlackBlocksBuilder\Message\SlackMessage;
+use Kin29\SlackBlocksBuilder\Message\SlackText;
 use PHPUnit\Framework\TestCase;
 
 class SlackMessageTest extends TestCase
 {
     public function testBuildMessage()
     {
-        $text = (new SlackText())
-            ->type('mrkdwn')
-            ->text('Hello!');
-
         $block = (new SlackBlock())
             ->type('section')
-            ->text($text);
+            ->text(
+                (new SlackText())
+                    ->type('mrkdwn')
+                    ->text('Hello!')
+            );
 
-        $message = new SlackMessage();
-        $message->blocks([$block, $block]);
 
         $expected = [
             "blocks" => [
@@ -40,7 +41,7 @@ class SlackMessageTest extends TestCase
 
         $this->assertEquals(
             json_encode($expected, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE),
-            (string)$message
+            (new SlackMessage())->blocks([$block, $block])
         );
     }
 

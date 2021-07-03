@@ -15,7 +15,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Kin29\\SlackBlocksBuilder\\": "tests/"
+            "Kin29\\SlackBlocksBuilder\\Tests\\": "tests/"
         }
     },
     "require-dev": {
