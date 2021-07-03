@@ -1,5 +1,7 @@
 {
     "name": "kin29/slack-blocks-builder",
+    "description": "Build slack layout blocks.",
+    "license": "proprietary"
     "authors": [
         {
             "name": "kin29",
