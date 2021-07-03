@@ -247,4 +247,17 @@ class SlackBlockTest extends TestCase
             (string)$contextBlock
         );
     }
+
+    public function test_divider_block(): void
+    {
+        $expected = [
+            "type" => "divider",
+            "block_id" => "divider123",
+        ];
+
+        $this->assertEquals(
+            json_encode($expected, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE),
+            (string)(new SlackBlock())->type('divider')->blockId('divider123')
+        );
+    }
 }
