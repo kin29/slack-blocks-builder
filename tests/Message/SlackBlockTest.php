@@ -7,7 +7,6 @@ namespace Kin29\SlackBlocksBuilder\Tests\Message;
 use Kin29\SlackBlocksBuilder\Message\SlackBlock;
 use Kin29\SlackBlocksBuilder\Message\SlackElement\SlackButtonElement;
 use Kin29\SlackBlocksBuilder\Message\SlackElement\SlackDatePickerElement;
-use Kin29\SlackBlocksBuilder\Message\SlackElement\SlackElement;
 use Kin29\SlackBlocksBuilder\Message\SlackElement\SlackImageElement;
 use Kin29\SlackBlocksBuilder\Message\SlackElement\SlackOverflowMenuElement;
 use Kin29\SlackBlocksBuilder\Message\SlackElement\SlackPlainTextInputElement;
