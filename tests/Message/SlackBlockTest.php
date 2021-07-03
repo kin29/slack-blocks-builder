@@ -7,8 +7,10 @@ namespace Kin29\SlackBlocksBuilder\Tests\Message;
 use Kin29\SlackBlocksBuilder\Message\SlackBlock;
 use Kin29\SlackBlocksBuilder\Message\SlackElement\SlackButtonElement;
 use Kin29\SlackBlocksBuilder\Message\SlackElement\SlackDatePickerElement;
+use Kin29\SlackBlocksBuilder\Message\SlackElement\SlackElement;
 use Kin29\SlackBlocksBuilder\Message\SlackElement\SlackImageElement;
 use Kin29\SlackBlocksBuilder\Message\SlackElement\SlackOverflowMenuElement;
+use Kin29\SlackBlocksBuilder\Message\SlackElement\SlackPlainTextInputElement;
 use Kin29\SlackBlocksBuilder\Message\SlackElement\SlackSelectMenuElement\SlackStaticSelect;
 use Kin29\SlackBlocksBuilder\Message\SlackOption;
 use Kin29\SlackBlocksBuilder\Message\SlackText;
@@ -314,6 +316,29 @@ class SlackBlockTest extends TestCase
                 ->blockId('image4')
                 ->imageUrl('http://placekitten.com/500/500')
                 ->altText('An incredibly cute kitten.')
+        );
+    }
+
+    public function test_input_block(): void
+    {
+        $expected = [
+            "type" => "input",
+            "label" => [
+                "type" => "plain_text",
+                "text" => "Label",
+                "emoji" => true,
+            ],
+            "element" => [
+                "type" => "plain_text_input"
+            ],
+        ];
+
+        $this->assertEquals(
+            json_encode($expected, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE),
+            (string)(new SlackBlock())
+                ->type('input')
+                ->element((new SlackPlainTextInputElement()))
+                ->label((new SlackText())->type('plain_text')->text('Label')->emoji())
         );
     }
 }
