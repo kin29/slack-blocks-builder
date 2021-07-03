@@ -260,4 +260,18 @@ class SlackBlockTest extends TestCase
             (string)(new SlackBlock())->type('divider')->blockId('divider123')
         );
     }
+
+    public function test_file_block(): void
+    {
+        $expected = [
+            "type" => "file",
+            "external_id" => "ABCD1",
+            "source" => "remote",
+        ];
+
+        $this->assertEquals(
+            json_encode($expected, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE),
+            (string)(new SlackBlock())->type('file')->externalId('ABCD1')->source('remote')
+        );
+    }
 }
