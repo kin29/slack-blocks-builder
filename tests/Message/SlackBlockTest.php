@@ -341,4 +341,97 @@ class SlackBlockTest extends TestCase
                 ->label((new SlackText())->type('plain_text')->text('Label')->emoji())
         );
     }
+
+    public function test_section_block_with_simple_text(): void
+    {
+        $expected = [
+            "type" => "section",
+            "text" => [
+                "type" => "mkdwn",
+                "text" => "A message *with some bold text* and _some italicized text_.",
+            ],
+        ];
+
+        $this->assertEquals(
+            json_encode($expected, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE),
+            (string)(new SlackBlock())
+                ->type('section')
+                ->text((new SlackText())
+                    ->type('mkdwn')
+                    ->text('A message *with some bold text* and _some italicized text_.'))
+        );
+    }
+
+    public function test_select_block_containing_text_fields(): void
+    {
+        $expected = [
+            "type" => "section",
+            "text" => [
+                "type" => "mkdwn",
+                "text" => "A message *with some bold text* and _some italicized text_.",
+            ],
+            "fields" => [
+                [
+                    "type" => "mkdwn",
+                    "text" => "High",
+                ],
+                [
+                    "type" => "plain_text",
+                    "text" => "String",
+                    "emoji" => true
+                ],
+            ],
+        ];
+
+        $this->assertEquals(
+            json_encode($expected, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE),
+            (string)(new SlackBlock())
+                ->type('section')
+                ->text((new SlackText())
+                    ->type('mkdwn')
+                    ->text('A message *with some bold text* and _some italicized text_.'))
+                ->fields([
+                    (new SlackText())
+                        ->type('mkdwn')
+                        ->text('High'),
+                    (new SlackText())
+                        ->type('plain_text')
+                        ->text('String')
+                        ->emoji()
+                ])
+        );
+    }
+
+    public function test_section_block_with_datepicker_element(): void
+    {
+        $expected = [
+            "type" => "section",
+            "text" => [
+                "type" => "mkdwn",
+                "text" => "*Sally* has requested you set the deadline for the Nano launch project",
+            ],
+            "accessory" => [
+                "type" => "datepicker",
+                "action_id" => "datepicker123",
+                "placeholder" => [
+                    "type" => "plain_text",
+                    "text" => "Select a date",
+                ],
+                "initial_date" => "1990-04-28",
+            ]
+        ];
+
+        $this->assertEquals(
+            json_encode($expected, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE),
+            (string)(new SlackBlock())
+                ->type('section')
+                ->text((new SlackText())
+                    ->type('mkdwn')
+                    ->text('*Sally* has requested you set the deadline for the Nano launch project'))
+                ->accessory((new SlackDatePickerElement())
+                    ->actionId('datepicker123')
+                    ->initialDate('1990-04-28')
+                    ->placeholder((new SlackText())->type('plain_text')->text('Select a date')))
+        );
+    }
 }
