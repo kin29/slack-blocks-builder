@@ -1,8 +1,11 @@
 <?php
 
-namespace Kin29\SlackBlocksBuilder\Message\SlackElement;
+declare(strict_types=1);
+
+namespace Kin29\SlackBlocksBuilder\Tests\Message\SlackElement;
 
 use Kin29\SlackBlocksBuilder\Message\SlackBlock;
+use Kin29\SlackBlocksBuilder\Message\SlackElement\SlackButtonElement;
 use Kin29\SlackBlocksBuilder\Message\SlackText;
 use PHPUnit\Framework\TestCase;
 

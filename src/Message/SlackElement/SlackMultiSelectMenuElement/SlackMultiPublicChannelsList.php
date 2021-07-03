@@ -4,10 +4,7 @@ declare(strict_types=1);
 
 namespace Kin29\SlackBlocksBuilder\Message\SlackElement\SlackMultiSelectMenuElement;
 
-use Kin29\SlackBlocksBuilder\Message\SlackConfirm;
-use Kin29\SlackBlocksBuilder\Message\SlackText;
-
-class SlackMultiPublicChannelsList extends SlackSelectMenuElement
+class SlackMultiPublicChannelsList extends SlackMultiSelectMenuElement
 {
     protected ?string $type = 'multi_channels_select';
 

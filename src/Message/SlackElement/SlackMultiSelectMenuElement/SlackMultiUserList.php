@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Kin29\SlackBlocksBuilder\Message\SlackElement\SlackMultiSelectMenuElement;
 
-class SlackMultiUserList extends SlackSelectMenuElement
+class SlackMultiUserList extends SlackMultiSelectMenuElement
 {
     protected ?string $type = 'multi_users_select';
 

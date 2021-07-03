@@ -7,7 +7,7 @@ namespace Kin29\SlackBlocksBuilder\Message\SlackElement\SlackMultiSelectMenuElem
 use Kin29\SlackBlocksBuilder\Message\SlackOption;
 use Kin29\SlackBlocksBuilder\Message\SlackOptionGroup;
 
-class SlackMultiStaticSelect extends SlackSelectMenuElement
+class SlackMultiStaticSelect extends SlackMultiSelectMenuElement
 {
     protected ?string $type = 'multi_static_select';
 
@@ -19,9 +19,9 @@ class SlackMultiStaticSelect extends SlackSelectMenuElement
 
     /**
      * @param SlackOption[] $options
-     * @return SlackStaticSelect
+     * @return SlackMultiStaticSelect
      */
-    public function options(array $options): SlackStaticSelect
+    public function options(array $options): SlackMultiStaticSelect
     {
         foreach ($options as $option) {
             if (!$option instanceof SlackOption) {
@@ -36,9 +36,9 @@ class SlackMultiStaticSelect extends SlackSelectMenuElement
 
     /**
      * @param SlackOptionGroup[] $optionGroups
-     * @return SlackStaticSelect
+     * @return SlackMultiStaticSelect
      */
-    public function optionGroups(array $optionGroups): SlackStaticSelect
+    public function optionGroups(array $optionGroups): SlackMultiStaticSelect
     {
         foreach ($optionGroups as $optionGroup) {
             if (!$optionGroup instanceof SlackOptionGroup) {
@@ -53,9 +53,9 @@ class SlackMultiStaticSelect extends SlackSelectMenuElement
 
     /**
      * @param SlackOption[] $initialOptions
-     * @return SlackStaticSelect
+     * @return SlackMultiStaticSelect
      */
-    public function initialOptions(array $initialOptions): SlackStaticSelect
+    public function initialOptions(array $initialOptions): SlackMultiStaticSelect
     {
         foreach ($initialOptions as $initialOption) {
             if (!$initialOption instanceof SlackOption) {

@@ -6,7 +6,7 @@ namespace Kin29\SlackBlocksBuilder\Message\SlackElement\SlackMultiSelectMenuElem
 
 use Kin29\SlackBlocksBuilder\Message\SlackOption;
 
-class SlackMultiExternalSelect extends SlackSelectMenuElement
+class SlackMultiExternalSelect extends SlackMultiSelectMenuElement
 {
     protected ?string $type = 'multi_external_select';
 

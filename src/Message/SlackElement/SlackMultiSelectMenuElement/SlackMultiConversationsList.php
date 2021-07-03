@@ -6,7 +6,7 @@ namespace Kin29\SlackBlocksBuilder\Message\SlackElement\SlackMultiSelectMenuElem
 
 use Kin29\SlackBlocksBuilder\Message\SlackFilter;
 
-class SlackMultiConversationsList extends SlackSelectMenuElement
+class SlackMultiConversationsList extends SlackMultiSelectMenuElement
 {
     protected ?string $type = 'multi_conversations_select';
 

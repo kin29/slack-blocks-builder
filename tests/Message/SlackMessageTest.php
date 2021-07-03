@@ -1,7 +1,10 @@
 <?php
 
-namespace Kin29\SlackBlocksBuilder\Message;
+namespace Kin29\SlackBlocksBuilder\Tests\Message;
 
+use Kin29\SlackBlocksBuilder\Message\SlackBlock;
+use Kin29\SlackBlocksBuilder\Message\SlackMessage;
+use Kin29\SlackBlocksBuilder\Message\SlackText;
 use PHPUnit\Framework\TestCase;
 
 class SlackMessageTest extends TestCase

@@ -1,7 +1,10 @@
 <?php
 
-namespace Kin29\SlackBlocksBuilder\Message\SlackElement;
+declare(strict_types=1);
 
+namespace Kin29\SlackBlocksBuilder\Tests\Message\SlackElement;
+
+use Kin29\SlackBlocksBuilder\Message\SlackElement\SlackImageElement;
 use PHPUnit\Framework\TestCase;
 
 class SlackImageElementTest extends TestCase
