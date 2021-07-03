@@ -1,10 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Kin29\SlackBlocksBuilder\Tests\Message;
 
 use Kin29\SlackBlocksBuilder\Message\SlackBlock;
 use Kin29\SlackBlocksBuilder\Message\SlackElement\SlackButtonElement;
 use Kin29\SlackBlocksBuilder\Message\SlackElement\SlackDatePickerElement;
+use Kin29\SlackBlocksBuilder\Message\SlackElement\SlackImageElement;
 use Kin29\SlackBlocksBuilder\Message\SlackElement\SlackOverflowMenuElement;
 use Kin29\SlackBlocksBuilder\Message\SlackElement\SlackSelectMenuElement\SlackStaticSelect;
 use Kin29\SlackBlocksBuilder\Message\SlackOption;
@@ -209,6 +212,39 @@ class SlackBlockTest extends TestCase
         $this->assertEquals(
             json_encode($expected, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE),
             (string)$actionBlock
+        );
+    }
+
+    public function test_context_block(): void
+    {
+        $contextBlock = (new SlackBlock())
+            ->type('context')
+            ->elements([
+                (new SlackImageElement())
+                    ->imageUrl('https://image.freepik.com/free-photo/red-drawing-pin_1156-445.jpg')
+                    ->altText('images'),
+                (new SlackText())->type('mkdwn')->text('Location: **Dogpatch**')
+            ])
+        ;
+
+        $expected = [
+            "type" => "context",
+            "elements" => [
+                [
+                    "type" => "image",
+                    "image_url" => "https://image.freepik.com/free-photo/red-drawing-pin_1156-445.jpg",
+                    "alt_text" => "images"
+                ],
+                [
+                    "type" => "mkdwn",
+                    "text" => "Location: **Dogpatch**"
+                ]
+            ],
+        ];
+
+        $this->assertEquals(
+            json_encode($expected, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE),
+            (string)$contextBlock
         );
     }
 }
