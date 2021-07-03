@@ -292,4 +292,28 @@ class SlackBlockTest extends TestCase
                 ->text((new SlackText())->type('plain_text')->text('Budget Performance'))
         );
     }
+
+    public function test_image_block(): void
+    {
+        $expected = [
+            "type" => "image",
+            "block_id" => "image4",
+            "image_url" => "http://placekitten.com/500/500",
+            "alt_text" => "An incredibly cute kitten.",
+            "title" => [
+                "type" => "plain_text",
+                "text" => "Please enjoy this photo of a kitten",
+            ],
+        ];
+
+        $this->assertEquals(
+            json_encode($expected, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE),
+            (string)(new SlackBlock())
+                ->type('image')
+                ->title((new SlackText())->type('plain_text')->text('Please enjoy this photo of a kitten'))
+                ->blockId('image4')
+                ->imageUrl('http://placekitten.com/500/500')
+                ->altText('An incredibly cute kitten.')
+        );
+    }
 }
