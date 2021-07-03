@@ -16,7 +16,7 @@ class SlackBlock extends AbstractSlackMessage
     protected string $type;
 
     /**
-     * @var SlackElement[]
+     * @var SlackElement[]|SlackText[]
      * type="action,context"の時必須
      */
     protected array $elements;
@@ -110,13 +110,13 @@ class SlackBlock extends AbstractSlackMessage
     }
 
     /**
-     * @param SlackElement[] $elements
+     * @param SlackElement[]|SlackText[] $elements
      * @return SlackBlock
      */
     public function elements(array $elements): SlackMessageInterface
     {
         foreach ($elements as $element) {
-            if (!$element instanceof SlackElement) {
+            if (!($element instanceof SlackElement || $element instanceof SlackText)) {
                 throw new \LogicException('Must hold only SlackElement instances.');
             }
 
