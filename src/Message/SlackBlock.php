@@ -254,7 +254,7 @@ class SlackBlock extends AbstractSlackMessage
     {
         foreach ($fields as $field) {
             if (!$field instanceof SlackText) {
-                throw new \LogicException('Must hold only SlackBlock instances.');
+                throw new \LogicException('Must hold only SlackText instances.');
             }
 
             $this->fields[] = $field->payload();

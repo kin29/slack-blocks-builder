@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Kin29\SlackBlocksBuilder\Message\SlackElement;
 
 use Kin29\SlackBlocksBuilder\Message\SlackConfirm;
-use Kin29\SlackBlocksBuilder\Message\SlackMessageInterface;
 use Kin29\SlackBlocksBuilder\Message\SlackOption;
 
 class SlackCheckBoxGroups extends SlackElement
@@ -32,9 +31,9 @@ class SlackCheckBoxGroups extends SlackElement
 
     /**
      * @param SlackOption[] $options
-     * @return SlackMessageInterface
+     * @return SlackCheckBoxGroups
      */
-    public function options(array $options): SlackMessageInterface
+    public function options(array $options): SlackCheckBoxGroups
     {
         foreach ($options as $option) {
             if (!$option instanceof SlackOption) {
@@ -49,9 +48,9 @@ class SlackCheckBoxGroups extends SlackElement
 
     /**
      * @param SlackOption[] $initialOptions
-     * @return SlackMessageInterface
+     * @return SlackCheckBoxGroups
      */
-    public function initialOptions(array $initialOptions): SlackMessageInterface
+    public function initialOptions(array $initialOptions): SlackCheckBoxGroups
     {
         foreach ($initialOptions as $initialOption) {
             if (!$initialOption instanceof SlackOption) {
